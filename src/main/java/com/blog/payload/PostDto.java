@@ -55,6 +55,15 @@ public class PostDto {
         this.imageName = imageName;
     }
 
+    public Integer getPostId() {
+        return postId;
+    }
+
+    public void setPostId(Integer postId) {
+        this.postId = postId;
+    }
+
+    private Integer postId;
     private String title;
     private String content;
     private String imageName;

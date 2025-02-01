@@ -1,7 +1,9 @@
 package com.blog.payload;
 
+import lombok.*;
+
+
 public class ApiResponse {
-    private String messsage;
 
     public boolean isSuccess() {
         return success;
@@ -18,7 +20,7 @@ public class ApiResponse {
     public void setMesssage(String messsage) {
         this.messsage = messsage;
     }
-
+   private String messsage;
     private boolean success;
     public ApiResponse(String messsage, boolean success) {
         this.messsage = messsage;
