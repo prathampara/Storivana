@@ -1,4 +1,4 @@
-package com.blog.impl;
+package com.blog.service.impl;
 
 import com.blog.entity.Category;
 import com.blog.entity.Post;
