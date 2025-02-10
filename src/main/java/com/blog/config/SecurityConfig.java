@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.DefaultSecurityFilterChain;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -16,37 +17,17 @@ public class SecurityConfig  {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-        http.csrf(AbstractHttpConfigurer::disable);
-        http.authorizeHttpRequests(auth -> auth
-                .requestMatchers("ez/*").permitAll()
+http
+        .csrf()
+        .disable()
+        .authorizeHttpRequests()
+        .anyRequest()
+        .authenticated()
+        .and()
+        .httpBasic();
 
-                .anyRequest().authenticated()
-        );
-
-
-        http
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
-
-
-        return http.build();
-    }
-//    @Bean
-//        public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//
-//            http.csrf(AbstractHttpConfigurer::disable);
-//            http.authorizeHttpRequests(auth -> auth
-//
-//                    .requestMatchers("/auth/**").authenticated()
-//                    .anyRequest().permitAll()
-//
-//
-//
-//            );
-//
-//            return http.build();
-//        }
-                
+        DefaultSecurityFilterChain defaultSecurityFilterChain = http.build();
+        return defaultSecurityFilterChain;
         
-        
-    }
+    }}
 
