@@ -1,4 +1,5 @@
 Features ✨
+
 	•	CRUD operations for blog posts
 	•	RESTful API endpoints
 	•	Database integration using JPA (MySQL)
